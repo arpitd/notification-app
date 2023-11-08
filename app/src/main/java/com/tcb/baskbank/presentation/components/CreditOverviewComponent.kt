@@ -50,7 +50,8 @@ fun CreditOverviewUI(navController: NavController) {
                 acc = "10002334",
                 facilities = "15",
                 loans = "8",
-                rm = "John Crest"
+                rm = "John Crest",
+                color = Color(0xFFF5F5F5)
             ),
             Credit(
                 id = 1,
@@ -58,7 +59,8 @@ fun CreditOverviewUI(navController: NavController) {
                 acc = "10002334",
                 facilities = "15",
                 loans = "8",
-                rm = "John Crest"
+                rm = "John Crest",
+                color = Color(0xFFF2F7FF)
             ),
             Credit(
                 id = 2,
@@ -66,7 +68,8 @@ fun CreditOverviewUI(navController: NavController) {
                 acc = "10007385",
                 facilities = "12",
                 loans = "4",
-                rm = "Tim David"
+                rm = "Tim David",
+                color = Color(0xFFF5F5F5)
             ),
             Credit(
                 id = 3,
@@ -74,7 +77,9 @@ fun CreditOverviewUI(navController: NavController) {
                 acc = "10007445",
                 facilities = "10",
                 loans = "6",
-                rm = "Smith John"
+                rm = "Smith John",
+                color = Color(0xFFF2F7FF)
+
             ),
             Credit(
                 id = 4,
@@ -82,7 +87,8 @@ fun CreditOverviewUI(navController: NavController) {
                 acc = "10009725",
                 facilities = "8",
                 loans = "2",
-                rm = "Anderson"
+                rm = "Anderson",
+                color = Color(0xFFF5F5F5)
             ),
             Credit(
                 id = 5,
@@ -90,7 +96,8 @@ fun CreditOverviewUI(navController: NavController) {
                 acc = "10009225",
                 facilities = "23",
                 loans = "8",
-                rm = "John Robot"
+                rm = "John Robot",
+                color = Color(0xFFF2F7FF)
             ),
             Credit(
                 id = 6,
@@ -98,7 +105,8 @@ fun CreditOverviewUI(navController: NavController) {
                 acc = "10002311",
                 facilities = "13",
                 loans = "5",
-                rm = "John Root"
+                rm = "John Root",
+                color = Color(0xFFF5F5F5)
             ),
         )
         ScalingLazyColumn(
@@ -143,11 +151,11 @@ fun CreditItemUI(credit: Credit, navController: NavController) {
         modifier = Modifier
             .width(180.dp)
             .height(85.dp)
-            .background(color = Color(0xFFF5F5F5), shape = RoundedCornerShape(size = 8.dp))
+            .background(color = credit.color, shape = RoundedCornerShape(size = 8.dp))
             .padding(6.dp)
             .clickable {
                 navController.navigate(Screen.CategoryDetailComponent.route)
-        },
+            },
     ) {
         Text(
             text = credit.name,

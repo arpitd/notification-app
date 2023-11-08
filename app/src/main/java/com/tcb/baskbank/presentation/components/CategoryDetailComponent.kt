@@ -53,7 +53,7 @@ fun CategoryDetailUI() {
                 cardType = "Foreign Currency",
                 cardNumber = "3000089988 | # of Loans: 12",
                 balance = "4100121",
-                color = Color(0xFFF5F5F5)
+                color = Color(0xFFF2F7FF)
             ),
             Account(
                 cardType = "Revolving Credit",
@@ -65,7 +65,7 @@ fun CategoryDetailUI() {
                 cardType = "Emergency Account",
                 cardNumber = "3000089678 | # of Loans: 25",
                 balance = "2300200",
-                color = Color(0xFFF5F5F5)
+                color = Color(0xFFF2F7FF)
             ),
         )
 
