@@ -8,7 +8,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,28 +23,39 @@ import com.tcb.baskbank.presentation.Screen
 import com.tcb.baskbank.presentation.data.Category
 import com.tcb.baskbank.presentation.theme.BgColor
 import com.tcb.baskbank.presentation.theme.Purple200
+import com.tcb.baskbank.presentation.theme.ScreenBG
+import com.tcb.baskbank.presentation.theme.TextColor
 
 
 @Composable
 fun DashboardComponent(navController: NavController) {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(start = 14.dp, end = 14.dp),
+            .background(ScreenBG)
     ) {
-        CategoryList(navController)
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(start = 14.dp, end = 14.dp)
+        ) {
+            CategoryList(navController)
+        }
     }
 }
 
 @Composable
 fun CategoryList(navController: NavController) {
     val listOfCategories = listOf(
-        Category(R.drawable.account_icon, "Accounts"),
+        Category(R.drawable.dashboard, "Dashboard"),
+        Category(R.drawable.activity_center, "Activity Center"),
+        Category(R.drawable.transaction_icon, "Deposits"),
+        Category(R.drawable.credit_icon, "Credit"),
+        Category(R.drawable.account_icon, "Payment Center"),
+        Category(R.drawable.investment, "Investment"),
+        Category(R.drawable.mort_finance, "Mortgage Finance"),
         Category(R.drawable.bell_icon, "Notifications"),
-        Category(R.drawable.transaction_icon, "Transactions"),
-        Category(R.drawable.money_transfer_icon, "Money Transfers"),
-        Category(R.drawable.locator_icon, "ATM Locator"),
-        Category(R.drawable.budget_tracking_icon, "Budget Tracking"),
+        Category(R.drawable.settings, "Settings"),
     )
 
     ScalingLazyColumn(
@@ -65,18 +78,17 @@ fun CategoryItem(item: Category, navController: NavController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(32.dp)
-            .background(color = BgColor, shape = RoundedCornerShape(8.dp))
+            .height(34.dp)
+            .padding(start = 2.dp, top = 2.dp, end = 2.dp, bottom = 4.dp)
+            .background(color = BgColor, shape = RoundedCornerShape(6.dp))
             .clickable {
-                navController.navigate(Screen.CategoryDetailComponent.route)
+                // navController.navigate(Screen.CategoryDetailComponent.route)
+                navController.navigate(Screen.CreditOverviewComponent.route)
             },
-        horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.CenterVertically
+        horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.Start),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Spacer(
-            modifier = Modifier
-                .width(8.dp)
-        )
+        Spacer(modifier = Modifier.width(5.dp))
         Icon(
             modifier = Modifier
                 .width(21.dp)
@@ -85,13 +97,12 @@ fun CategoryItem(item: Category, navController: NavController) {
             contentDescription = item.name,
             tint = Purple200
         )
-        Spacer(
-            modifier = Modifier
-                .width(4.dp)
-        )
         Text(
             text = item.name,
-            fontSize = 13.sp,
+            style = TextStyle(
+                fontSize = 12.sp,
+                color = TextColor,
+            )
         )
     }
 }
@@ -118,11 +129,14 @@ fun UserProfile() {
         Text(
             text = "Hello! ",
             fontSize = 12.sp,
-            fontWeight = FontWeight.SemiBold
+            fontWeight = FontWeight(700),
+            color = Color.White
         )
         Text(
             text = "Alex",
             fontSize = 12.sp,
+            fontWeight = FontWeight(400),
+            color = Color.White
         )
     }
 }

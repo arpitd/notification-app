@@ -18,11 +18,23 @@ import androidx.wear.compose.material.*
 import com.tcb.baskbank.presentation.data.Account
 import com.tcb.baskbank.presentation.theme.CardColor
 import com.tcb.baskbank.presentation.theme.Purple200
+import com.tcb.baskbank.presentation.theme.ScreenBG
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
 @Composable
 fun CategoryDetailComponent() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(ScreenBG)
+    ) {
+        CategoryDetailUI()
+    }
+}
+
+@Composable
+fun CategoryDetailUI() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -32,35 +44,29 @@ fun CategoryDetailComponent() {
         // AccountInfo()
         val cardsList = listOf(
             Account(
-                cardType = "BASK INTEREST SAVINGS",
-                cardNumber = "**** **** **053",
-                balance = "120000.00",
-                color = Purple200
+                cardType = "Primary Account",
+                cardNumber = "3000089393 | # of Loans: 39",
+                balance = "6570500",
+                color = Color(0xFFF5F5F5)
             ),
             Account(
-                cardType = "BASK MILAGE SAVINGS",
-                cardNumber = "**** **** **4344",
-                balance = "176244.12",
-                color = Purple200
+                cardType = "Foreign Currency",
+                cardNumber = "3000089988 | # of Loans: 12",
+                balance = "4100121",
+                color = Color(0xFFF5F5F5)
             ),
             Account(
-                cardType = "Credit Card",
-                cardNumber = "**** **** **** 1212",
-                balance = "3510.00",
-                color = CardColor
+                cardType = "Revolving Credit",
+                cardNumber = "3000080008 | # of Loans: 33",
+                balance = "3231198",
+                color = Color(0xFFF5F5F5)
             ),
             Account(
-                cardType = "Credit Card",
-                cardNumber = "**** **** **** 4545",
-                balance = "12330.00",
-                color = CardColor
+                cardType = "Emergency Account",
+                cardNumber = "3000089678 | # of Loans: 25",
+                balance = "2300200",
+                color = Color(0xFFF5F5F5)
             ),
-            Account(
-                cardType = "Credit Card",
-                cardNumber = "**** **** **** 5656",
-                balance = "1040.00",
-                color = CardColor
-            )
         )
 
         ScalingLazyColumn(
@@ -69,17 +75,17 @@ fun CategoryDetailComponent() {
         ) {
             item {
                 ListHeader {
-                    Text(
-                        text = "Accounts",
-                        style = TextStyle(
-                            fontSize = 15.sp,
-                            lineHeight = 21.sp,
-                            fontWeight = FontWeight(500),
-                            color = Color(0xFFF26A21),
-                            textAlign = TextAlign.Center,
-                            letterSpacing = 0.3.sp,
+                    Column {
+                        Text(
+                            text = "Facility Overview",
+                            style = TextStyle(
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight(400),
+                                color = Color.White,
+                                textAlign = TextAlign.Center,
+                            )
                         )
-                    )
+                    }
                 }
             } // item end
             items(cardsList) { card ->
@@ -120,18 +126,17 @@ fun AccountInfo(account: Account) {
             text = account.cardNumber,
             style = TextStyle(
                 fontSize = 10.sp,
-                fontWeight = FontWeight(400),
-                color = Color(0xFF141318),
+                fontWeight = FontWeight(300),
+                color = Color(0xFF333333),
             )
         )
         Text(
             modifier = Modifier.padding(start = 8.dp),
-            text = "Available Balance",
+            text = "Available Amount",
             style = TextStyle(
                 fontSize = 9.sp,
-                fontWeight = FontWeight(400),
-                color = Color(0xFF000000),
-
+                fontWeight = FontWeight(300),
+                color = Color(0xFF333333),
                 )
         )
         Text(
@@ -140,7 +145,7 @@ fun AccountInfo(account: Account) {
             style = TextStyle(
                 fontSize = 15.sp,
                 fontWeight = FontWeight(400),
-                color = Color(0xFF333333),
+                color = Color(0xFF333333)
             )
         )
     }

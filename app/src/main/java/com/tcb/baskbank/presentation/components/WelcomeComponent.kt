@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -18,9 +19,21 @@ import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.Text
 import com.tcb.baskbank.R
 import com.tcb.baskbank.presentation.Screen
+import com.tcb.baskbank.presentation.theme.ScreenBG
 
 @Composable
 fun WelcomeComponent(navController: NavController) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(ScreenBG)
+    ) {
+        WelcomeUI(navController)
+    }
+}
+
+@Composable
+fun WelcomeUI(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -28,21 +41,37 @@ fun WelcomeComponent(navController: NavController) {
         verticalArrangement = Arrangement.Center
     ) {
         Spacer(modifier = Modifier.height(16.dp))
-        Image(
+        /*Image(
             modifier = Modifier
                 .width(100.dp)
                 .height(16.dp)
                 .align(Alignment.CenterHorizontally),
             painter = painterResource(id = R.drawable.bask_logo),
             contentDescription = "bask logo"
-        )
+        )*/
+        Row(
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.Start),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.bask_logo),
+                contentDescription = "image description",
+                contentScale = ContentScale.None
+            )
+            Image(
+                painter = painterResource(id = R.drawable.creditnow_text),
+                contentDescription = "image description",
+                contentScale = ContentScale.None
+            )
+        }
         Spacer(modifier = Modifier.height(14.dp))
         Text(
             text = "Welcome to",
             fontSize = 17.sp,
         )
         Text(
-            text = "Bask Digital Bank",
+            text = "Texas Capital Bank",
             fontSize = 18.sp,
             fontWeight = FontWeight.SemiBold
         )

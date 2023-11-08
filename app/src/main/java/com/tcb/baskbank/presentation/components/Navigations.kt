@@ -26,6 +26,10 @@ fun Navigations() {
             CategoryDetailComponent(/*navController = navController*/)
         }
 
+        composable(route = Screen.CreditOverviewComponent.route) {
+            CreditOverviewComponent(navController = navController)
+        }
+
     }
 
 }
