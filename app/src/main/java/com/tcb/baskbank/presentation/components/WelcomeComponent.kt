@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -67,8 +68,10 @@ fun WelcomeUI(navController: NavController) {
         }
         Spacer(modifier = Modifier.height(14.dp))
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = "Welcome to",
             fontSize = 17.sp,
+            textAlign = TextAlign.Center
         )
         Text(
             text = "Texas Capital Bank",
